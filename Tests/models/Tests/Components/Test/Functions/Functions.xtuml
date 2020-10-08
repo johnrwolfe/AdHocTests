@@ -1,0 +1,85 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("6a4a82e9-5119-463b-b210-5e00c3ece052",
+	"00000000-0000-0000-0000-000000000000",
+	"846e9e70-104d-4678-8694-b2e3922e335a",
+	'Functions',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("c5df5776-d86a-449a-b794-4d7eb5cea450",
+	112,
+	"6a4a82e9-5119-463b-b210-5e00c3ece052",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'Tests::Components::Test::Functions');
+INSERT INTO DIM_DIA
+	VALUES ("c5df5776-d86a-449a-b794-4d7eb5cea450",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("11a44be8-a1a3-4c0b-9871-0a634b5e8920",
+	"00000000-0000-0000-0000-000000000000",
+	'TestEventPending',
+	'A test to show that an event which caused a transition into a state is misleadingly 
+displayed as pending in Verifier''s Session Explorer.
+Set a breakpoint in state "looking" of observation before executing this.
+View the instance in Session Explorer: event "peek" is shown.',
+	'create object instance glance of observation;
+generate observation1:peek() to glance;',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("11a44be8-a1a3-4c0b-9871-0a634b5e8920",
+	1,
+	"6a4a82e9-5119-463b-b210-5e00c3ece052",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("6a4a82e9-5119-463b-b210-5e00c3ece052",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"7bf54281-dcf1-4f23-91f6-05c5083cfd18",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("7bf54281-dcf1-4f23-91f6-05c5083cfd18",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Test',
+	'Two test functions exercise one-shot and recurring timers.
+
+When run deterministically - with simulated time ( no choice but to do so ) the action is as expected.
+Log messages stream continuously to the console.
+
+When run deterministically is unchecked - simulated time is still checked - nothing happens. (And restart does not alter this).
+
+When simulated time is unchecked( and deterministically unchecked ) log messages arrive separated in real time - as expected. 
+( This requires restart if simulated time has been run ).',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../Test.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("846e9e70-104d-4678-8694-b2e3922e335a",
+	'Tests',
+	1,
+	'../../../Tests.xtuml');
