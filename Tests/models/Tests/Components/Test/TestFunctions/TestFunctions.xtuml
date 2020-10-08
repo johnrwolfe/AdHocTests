@@ -4,7 +4,7 @@ INSERT INTO EP_PKG
 	VALUES ("6a4a82e9-5119-463b-b210-5e00c3ece052",
 	"00000000-0000-0000-0000-000000000000",
 	"846e9e70-104d-4678-8694-b2e3922e335a",
-	'Functions',
+	'TestFunctions',
 	'',
 	0);
 INSERT INTO GD_MD
@@ -25,7 +25,7 @@ INSERT INTO GD_MD
 	0,
 	0,
 	'',
-	'Tests::Components::Test::Functions');
+	'Tests::Components::Test::TestFunctions');
 INSERT INTO DIM_DIA
 	VALUES ("c5df5776-d86a-449a-b794-4d7eb5cea450",
 	'',
@@ -39,8 +39,8 @@ INSERT INTO S_SYNC
 	'TestEventPending',
 	'A test to show that an event which caused a transition into a state is misleadingly 
 displayed as pending in Verifier''s Session Explorer.
-Set a breakpoint in state "looking" of observation before executing this.
-View the instance in Session Explorer: event "peek" is shown.',
+Set a breakpoint in state "looking" of observation class before executing this function.
+View the instance in Session Explorer: event "peek" is shown as pending.',
 	'create object instance glance of observation;
 generate observation1:peek() to glance;',
 	"ba5eda7a-def5-0000-0000-000000000000",
