@@ -53,6 +53,125 @@ INSERT INTO PE_PE
 	"6a4a82e9-5119-463b-b210-5e00c3ece052",
 	"00000000-0000-0000-0000-000000000000",
 	1);
+INSERT INTO S_SYNC
+	VALUES ("78879f39-c2a4-467e-8b01-dea55e9d8ab9",
+	"00000000-0000-0000-0000-000000000000",
+	'PipeTest',
+	'',
+	'create object instance pipe1 of pipe;
+create object instance pipe2 of pipe;
+relate pipe2 to pipe1 across R2.''connects to'';
+pipe2.empty = true;
+create object instance pipe3 of pipe;
+relate pipe3 to pipe1 across R2.''connects to'';
+create object instance pipe4 of pipe;
+relate pipe4 to pipe1 across R2.''connects to'';
+create object instance pipe5 of pipe;
+relate pipe5 to pipe1 across R2.''connects to'';
+
+select many segments related by pipe1->pipe[R2.''attaches to'']
+ where ( not selected.empty  );
+for each segment in segments
+	LOG::LogSuccess( message:"found one" );
+end for;
+ 
+
+',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("78879f39-c2a4-467e-8b01-dea55e9d8ab9",
+	1,
+	"6a4a82e9-5119-463b-b210-5e00c3ece052",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("3477824f-86bc-4c06-a565-396bf833be72",
+	"00000000-0000-0000-0000-000000000000",
+	'SetAddition',
+	'',
+	'create object instance t1 of thing;
+t1.sequenceNumber = 1;
+create object instance t2 of thing;
+t2.sequenceNumber = 2;
+create object instance t3 of thing;
+t3.sequenceNumber = 3;
+create object instance t4 of thing;
+t4.sequenceNumber = 4;
+create object instance t5 of thing;
+t5.sequenceNumber = 5;
+
+select many items from instances of thing;
+select many entities from instances of thing;
+
+all = items + entities;
+for each t in all
+  LOG::LogInteger( message:t.sequenceNumber );
+end for;',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("3477824f-86bc-4c06-a565-396bf833be72",
+	1,
+	"6a4a82e9-5119-463b-b210-5e00c3ece052",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("69d7ee07-e57d-488b-921d-a34954f3c9f5",
+	"00000000-0000-0000-0000-000000000000",
+	'Selections',
+	'',
+	'create object instance e1 of employee;
+e1.name = "Jack";
+create object instance e2 of employee;
+e2.name = "Jill";
+
+create object instance p1 of payment;
+relate p1 to e1 across R3.''is for'';
+create object instance p2 of payment;
+relate p2 to e2 across R3.''is for'';
+
+// Jack''s pay
+create object instance element1 of payElement;
+relate element1 to p1 across R4.''contributes to'';
+create object instance element2 of payElement;
+relate element2 to p1 across R4.''contributes to'';
+create object instance element3 of payElement;
+relate element3 to p1 across R4.''contributes to'';
+
+// Jill''s pay
+create object instance element4 of payElement;
+relate element4 to p2 across R4.''contributes to'';
+create object instance element5 of payElement;
+relate element5 to p2 across R4.''contributes to'';
+
+create object instance payroll of payroll;
+select many elements from instances of payElement;
+for each element in elements
+  relate element to payroll across R5.''is part of'';
+end for;
+
+select many employees related by payroll->payElement[R5.''computes'']
+                                        ->payment[R4.''contributes to'']
+                                        ->employee[R3.''is for''];
+                                        
+for each employee in employees
+  LOG::LogInfo( message:"name is " + employee.name );
+end for;                                        ',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("69d7ee07-e57d-488b-921d-a34954f3c9f5",
+	1,
+	"6a4a82e9-5119-463b-b210-5e00c3ece052",
+	"00000000-0000-0000-0000-000000000000",
+	1);
 INSERT INTO PE_PE
 	VALUES ("6a4a82e9-5119-463b-b210-5e00c3ece052",
 	1,
