@@ -1,0 +1,2 @@
+*,RootPackage,*,Tests::Components
+Components::Tests,InitFunction,Component,Selections
