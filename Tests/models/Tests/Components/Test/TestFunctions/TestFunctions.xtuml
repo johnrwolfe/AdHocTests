@@ -172,6 +172,29 @@ INSERT INTO PE_PE
 	"6a4a82e9-5119-463b-b210-5e00c3ece052",
 	"00000000-0000-0000-0000-000000000000",
 	1);
+INSERT INTO S_SYNC
+	VALUES ("0fc6c5a7-d306-40e5-a30c-a8e0e6ab5da8",
+	"00000000-0000-0000-0000-000000000000",
+	'Testtrigger',
+	'',
+	'create object instance obs1 of observation;
+create object instance trigger1 of trigger;
+relate obs1 to  trigger1 across R1.''waits for '';
+unrelate obs1 from trigger1 across R1.''waits for '';
+select any obs1 related by trigger1->observation[R1.''initiates''];
+if ( empty obs1 )
+  delete object instance trigger1;
+end if;',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("0fc6c5a7-d306-40e5-a30c-a8e0e6ab5da8",
+	1,
+	"6a4a82e9-5119-463b-b210-5e00c3ece052",
+	"00000000-0000-0000-0000-000000000000",
+	1);
 INSERT INTO PE_PE
 	VALUES ("6a4a82e9-5119-463b-b210-5e00c3ece052",
 	1,
