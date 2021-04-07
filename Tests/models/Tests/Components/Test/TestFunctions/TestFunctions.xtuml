@@ -161,7 +161,12 @@ select many employees related by payroll->payElement[R5.''computes'']
                                         
 for each employee in employees
   LOG::LogInfo( message:"name is " + employee.name );
-end for;                                        ',
+end for;                                        
+
+create object instance t of thing;;
+create object instance c of coOwner;
+relate t to c across R8.''are shared by'';
+',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'',
@@ -191,6 +196,34 @@ end if;',
 	0);
 INSERT INTO PE_PE
 	VALUES ("0fc6c5a7-d306-40e5-a30c-a8e0e6ab5da8",
+	1,
+	"6a4a82e9-5119-463b-b210-5e00c3ece052",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("1f8e0ab5-2dd3-4153-bd5e-4145b872766e",
+	"00000000-0000-0000-0000-000000000000",
+	'PersistTest',
+	'',
+	'LOG::LogInfo( message:"Trying to load from stdin" );
+SQL::load();
+
+select any employee from instances of employee;
+if ( empty employee )
+  LOG::LogInfo( message:"creating instances programatically" );
+  ::Selections();
+  LOG::LogInfo( message:"created..." );
+end if;
+
+LOG::LogInfo( message:"persisting..." );
+SQL::serialize_file( file:"persisted.sql" );
+',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("1f8e0ab5-2dd3-4153-bd5e-4145b872766e",
 	1,
 	"6a4a82e9-5119-463b-b210-5e00c3ece052",
 	"00000000-0000-0000-0000-000000000000",
