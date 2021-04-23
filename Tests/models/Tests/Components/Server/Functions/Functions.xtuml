@@ -1,0 +1,76 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("9b739d0f-c80a-47a0-9ab8-b8f8924757ce",
+	"00000000-0000-0000-0000-000000000000",
+	"846e9e70-104d-4678-8694-b2e3922e335a",
+	'Functions',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("6e43c5da-5748-433f-ab9a-6043a951b3c7",
+	112,
+	"9b739d0f-c80a-47a0-9ab8-b8f8924757ce",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'Tests::Components::Server::Functions');
+INSERT INTO DIM_DIA
+	VALUES ("6e43c5da-5748-433f-ab9a-6043a951b3c7",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("5c1a9ead-1857-4805-88e0-d0c97c608103",
+	"00000000-0000-0000-0000-000000000000",
+	'T1',
+	'',
+	'select any e from instances of Employee;
+send Clnt::a( emp:e );',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0,
+	1);
+INSERT INTO PE_PE
+	VALUES ("5c1a9ead-1857-4805-88e0-d0c97c608103",
+	1,
+	"9b739d0f-c80a-47a0-9ab8-b8f8924757ce",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("9b739d0f-c80a-47a0-9ab8-b8f8924757ce",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"4a1ffa2c-b990-4a98-b870-3892022bdebd",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("4a1ffa2c-b990-4a98-b870-3892022bdebd",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Server',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'',
+	'../Server.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("846e9e70-104d-4678-8694-b2e3922e335a",
+	'Tests',
+	1,
+	'../../../Tests.xtuml');
