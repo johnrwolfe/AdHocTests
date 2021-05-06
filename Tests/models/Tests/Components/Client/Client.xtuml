@@ -216,8 +216,11 @@ INSERT INTO SPR_RS
 	VALUES ("eb5053bc-0717-4e62-835b-01cc53b2a3eb",
 	'a',
 	'',
-	'',
-	3,
+	'LOG::LogInfo( message:"Client: Employee name, birthdate, number" );
+LOG::LogInfo( message:param.emp.Name );
+LOG::LogInfo( message:param.emp.Birthdate );
+LOG::LogInteger( message:param.emp.Number );',
+	1,
 	0,
 	1);
 INSERT INTO C_EP_PROXY
@@ -227,6 +230,26 @@ INSERT INTO C_EP_PROXY
 	'a',
 	'',
 	1,
+	'../../Interfaces/Foo/Foo.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("f0cac963-fe73-4020-bdd2-a5178adb9e00",
+	"6bae966b-ff1d-43f5-9ac4-75b739cfce20",
+	"a39c99ea-77aa-487e-9681-eacbe3682a7b");
+INSERT INTO SPR_RS
+	VALUES ("f0cac963-fe73-4020-bdd2-a5178adb9e00",
+	'b',
+	'',
+	'',
+	3,
+	0,
+	2);
+INSERT INTO C_EP_PROXY
+	VALUES ("6bae966b-ff1d-43f5-9ac4-75b739cfce20",
+	"9f7fbc77-8bfe-4811-bb80-6a925484bbb3",
+	-1,
+	'b',
+	'',
+	2,
 	'../../Interfaces/Foo/Foo.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("9f7fbc77-8bfe-4811-bb80-6a925484bbb3",

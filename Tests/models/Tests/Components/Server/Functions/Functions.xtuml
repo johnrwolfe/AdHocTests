@@ -38,7 +38,11 @@ INSERT INTO S_SYNC
 	"00000000-0000-0000-0000-000000000000",
 	'T1',
 	'',
-	'select any e from instances of Employee;
+	'create object instance e of Employee;
+e.Birthdate = "07-Jan-1961";
+e.Name = "Jana Burke";
+e.Number = 123456;
+send Clnt::b( count:5 );
 send Clnt::a( emp:e );',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,

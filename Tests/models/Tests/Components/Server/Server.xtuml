@@ -241,7 +241,7 @@ INSERT INTO SPR_PS
 	'a',
 	'',
 	'',
-	3,
+	1,
 	0,
 	1);
 INSERT INTO C_EP_PROXY
@@ -251,6 +251,26 @@ INSERT INTO C_EP_PROXY
 	'a',
 	'',
 	1,
+	'../../Interfaces/Foo/Foo.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("dfaf3fec-98f3-4a56-a301-9334dea963a4",
+	"6bae966b-ff1d-43f5-9ac4-75b739cfce20",
+	"4236b545-6740-4928-bb60-aa91c75221f3");
+INSERT INTO SPR_PS
+	VALUES ("dfaf3fec-98f3-4a56-a301-9334dea963a4",
+	'b',
+	'',
+	'',
+	3,
+	0,
+	2);
+INSERT INTO C_EP_PROXY
+	VALUES ("6bae966b-ff1d-43f5-9ac4-75b739cfce20",
+	"9f7fbc77-8bfe-4811-bb80-6a925484bbb3",
+	-1,
+	'b',
+	'',
+	2,
 	'../../Interfaces/Foo/Foo.xtuml');
 INSERT INTO C_I_PROXY
 	VALUES ("9f7fbc77-8bfe-4811-bb80-6a925484bbb3",
