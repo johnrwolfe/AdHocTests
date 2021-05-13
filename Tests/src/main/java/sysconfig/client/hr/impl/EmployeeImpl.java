@@ -27,20 +27,6 @@ public class EmployeeImpl extends ModelInstance<Employee,Client> implements Empl
     private Client context;
 
     // constructors
-    
-    // @Added for 12002
-    public EmployeeImpl( sysconfig.server.hr.Employee serverEmp ) {
-      System.out.printf( "Copy constructor\n" );
-      try {
-    	m_Name = serverEmp.getName();
-    	m_Birthdate = serverEmp.getBirthdate();
-    	m_Number = serverEmp.getNumber();
-      } catch (Exception e) {
-          System.out.printf( "Exception in copy constructor: %s\n", e );
-      }
-      
-    }
-    
     private EmployeeImpl( Client context ) {
         this.context = context;
         m_Name = "";
@@ -50,6 +36,14 @@ public class EmployeeImpl extends ModelInstance<Employee,Client> implements Empl
 
     private EmployeeImpl( Client context, UniqueId instanceId, String m_Name, String m_Birthdate, int m_Number ) {
         super(instanceId);
+        this.context = context;
+        this.m_Name = m_Name;
+        this.m_Birthdate = m_Birthdate;
+        this.m_Number = m_Number;
+    }
+    
+    // @Added for 12002
+    private EmployeeImpl( Client context, String m_Name, String m_Birthdate, int m_Number ) {
         this.context = context;
         this.m_Name = m_Name;
         this.m_Birthdate = m_Birthdate;
@@ -72,7 +66,16 @@ public class EmployeeImpl extends ModelInstance<Employee,Client> implements Empl
         }
         else throw new InstancePopulationException( "Instance already exists within this population." );
     }
-
+    
+    // @Added for 12002
+    public static Employee create( Client context, String m_Name, String m_Birthdate, int m_Number ) throws XtumlException {
+        Employee newEmployee = new EmployeeImpl( context, m_Name, m_Birthdate, m_Number );
+        if ( context.addInstance( newEmployee ) ) {
+        	newEmployee.getRunContext().addChange(new InstanceCreatedDelta(newEmployee, KEY_LETTERS));
+            return newEmployee;
+        }
+        else throw new InstancePopulationException( "Instance already exists within this population." );
+    }
 
 
     // attributes
@@ -127,10 +130,16 @@ public class EmployeeImpl extends ModelInstance<Employee,Client> implements Empl
 
     // operations
     
+    // @Added for 12002
+    public String toString() {
+    	// @TODO
+    	return "";
+    }
+    
     // static operations
     
     // @Added for 12002
-    public static Employee deserialize( Object o ) {
+    public static Employee deserialize( Client context, Object o ) {
     	// @TODO
     	return (Employee) null;
     }

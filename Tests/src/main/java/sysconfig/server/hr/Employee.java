@@ -1,13 +1,13 @@
-package sysconfig.client.hr;
+package sysconfig.server.hr;
 
 
 import io.ciera.runtime.summit.classes.IModelInstance;
 import io.ciera.runtime.summit.exceptions.XtumlException;
 
-import sysconfig.Client;
+import sysconfig.Server;
 
 
-public interface Employee extends IModelInstance<Employee,Client> {
+public interface Employee extends IModelInstance<Employee,Server> {
 
     // attributes
     public String getName() throws XtumlException;
@@ -21,7 +21,7 @@ public interface Employee extends IModelInstance<Employee,Client> {
 
     // operations
     // @Added for 12002
-    public static Employee deserialize( Client context, Object o ) {
+    public static Employee deserialize( Server context, Object o ) {
     	return (Employee) null;
     };
     public String toString();

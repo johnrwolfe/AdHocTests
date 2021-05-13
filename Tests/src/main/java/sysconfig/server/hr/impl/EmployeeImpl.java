@@ -41,6 +41,14 @@ public class EmployeeImpl extends ModelInstance<Employee,Server> implements Empl
         this.m_Birthdate = m_Birthdate;
         this.m_Number = m_Number;
     }
+    
+    // @Added for 12002
+    private EmployeeImpl( Server context, String m_Name, String m_Birthdate, int m_Number ) {
+        this.context = context;
+        this.m_Name = m_Name;
+        this.m_Birthdate = m_Birthdate;
+        this.m_Number = m_Number;
+    }
 
     public static Employee create( Server context ) throws XtumlException {
         Employee newEmployee = new EmployeeImpl( context );
@@ -58,7 +66,16 @@ public class EmployeeImpl extends ModelInstance<Employee,Server> implements Empl
         }
         else throw new InstancePopulationException( "Instance already exists within this population." );
     }
-
+    
+    // @Added for 12002
+    public static Employee create( Server context, String m_Name, String m_Birthdate, int m_Number ) throws XtumlException {
+        Employee newEmployee = new EmployeeImpl( context, m_Name, m_Birthdate, m_Number );
+        if ( context.addInstance( newEmployee ) ) {
+        	newEmployee.getRunContext().addChange(new InstanceCreatedDelta(newEmployee, KEY_LETTERS));
+            return newEmployee;
+        }
+        else throw new InstancePopulationException( "Instance already exists within this population." );
+    }
 
 
     // attributes
@@ -118,9 +135,14 @@ public class EmployeeImpl extends ModelInstance<Employee,Server> implements Empl
     	// @TODO
     	return "";
     }
- 
+    
     // static operations
-
+    
+    // @Added for 12002
+    public static Employee deserialize( Server context, Object o ) {
+    	// @TODO
+    	return (Employee) null;
+    }
 
 
     // events
