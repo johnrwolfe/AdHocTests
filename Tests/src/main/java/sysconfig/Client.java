@@ -16,18 +16,22 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.TreeMap;
 
-import sysconfig.server.ServerClnt;
+import sysconfig.client.ClientSrv;
+import sysconfig.client.hr.Employee;
+import sysconfig.client.hr.EmployeeSet;
+import sysconfig.client.hr.impl.EmployeeImpl;
+import sysconfig.client.hr.impl.EmployeeSetImpl;
+/* @Removed for 12002
 import sysconfig.server.hr.Employee;
-import sysconfig.server.hr.EmployeeSet;
 import sysconfig.server.hr.impl.EmployeeImpl;
-import sysconfig.server.hr.impl.EmployeeSetImpl;
+*/
 
 
-public class Server extends Component<Server> {
+public class Client extends Component<Client> {
 
     private Map<String, Class<?>> classDirectory;
 
-    public Server(IApplication app, IRunContext runContext, int populationId) {
+    public Client(IApplication app, IRunContext runContext, int populationId) {
         super(app, runContext, populationId);
         Employee_extent = new EmployeeSetImpl();
 
@@ -37,14 +41,12 @@ public class Server extends Component<Server> {
     }
 
     // domain functions
-    public void T1() throws XtumlException {
+    public void T2() throws XtumlException {
         Employee e = EmployeeImpl.create( context() );
         e.setBirthdate("07-Jan-1961");
         e.setName("Jana Burke");
         e.setNumber(123456);
-        context().Clnt().b( 5 );
-        sysconfig.client.hr.impl.EmployeeImpl e_p = new sysconfig.client.hr.impl.EmployeeImpl( e );
-        context().Clnt().a( e_p );
+        context().Srv().c( e );
     }
 
 
@@ -63,10 +65,10 @@ public class Server extends Component<Server> {
 
 
     // ports
-    private ServerClnt ServerClnt;
-    public ServerClnt Clnt() {
-        if ( null == ServerClnt ) ServerClnt = new ServerClnt( this, null );
-        return ServerClnt;
+    private ClientSrv ClientSrv;
+    public ClientSrv Srv() {
+        if ( null == ClientSrv ) ClientSrv = new ClientSrv( this, null );
+        return ClientSrv;
     }
 
 
@@ -81,14 +83,14 @@ public class Server extends Component<Server> {
     // component initialization function
     @Override
     public void initialize() throws XtumlException {
-        T1();
+
     }
 
     @Override
     public String getVersion() {
         Properties prop = new Properties();
         try {
-            prop.load(getClass().getResourceAsStream("ServerProperties.properties"));
+            prop.load(getClass().getResourceAsStream("ClientProperties.properties"));
         } catch (IOException e) { /* do nothing */ }
         return prop.getProperty("version", "Unknown");
     }
@@ -96,7 +98,7 @@ public class Server extends Component<Server> {
     public String getVersionDate() {
         Properties prop = new Properties();
         try {
-            prop.load(getClass().getResourceAsStream("ServerProperties.properties"));
+            prop.load(getClass().getResourceAsStream("ClientProperties.properties"));
         } catch (IOException e) { /* do nothing */ }
         return prop.getProperty("version_date", "Unknown");
     }
@@ -118,7 +120,7 @@ public class Server extends Component<Server> {
     }
 
     @Override
-    public Server context() {
+    public Client context() {
         return this;
     }
 
