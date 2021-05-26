@@ -41,11 +41,14 @@ INSERT INTO S_SYNC
 	'create object instance suv of Car;
 suv.VIN = 1234;
 create object instance driver of Driver;
-relate driver to suv across R6.''owns'';
+create object instance reg of Registration;
+reg.Fee = 50;
+relate driver to suv across R6.''owns'' using reg;
 select one car related by driver->Car[R6.''owns''];
 
 create object instance dl of License;
-relate driver to dl across R7.''possesses'';
+create object instance ex of expiration;
+relate driver to dl across R7.''possesses'' using ex;
 select one licence related by driver->License[R7.''possesses''];',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,

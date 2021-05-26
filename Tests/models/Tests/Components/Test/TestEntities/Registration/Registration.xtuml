@@ -1,46 +1,41 @@
 -- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
 
 INSERT INTO O_OBJ
-	VALUES ("d66aab0c-9600-4d6e-b946-0cca3bde9389",
-	'trigger',
-	4,
-	'trigger',
+	VALUES ("28a81d79-71e9-442e-8e26-368b340c0016",
+	'Registration',
+	15,
+	'Registration',
 	'',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_NBATTR
-	VALUES ("344d461a-6ca4-4d3c-aa23-2aa5af47d7db",
-	"d66aab0c-9600-4d6e-b946-0cca3bde9389");
+	VALUES ("872b9e42-7e5c-45f2-9be9-5c47ce6645aa",
+	"28a81d79-71e9-442e-8e26-368b340c0016");
 INSERT INTO O_BATTR
-	VALUES ("344d461a-6ca4-4d3c-aa23-2aa5af47d7db",
-	"d66aab0c-9600-4d6e-b946-0cca3bde9389");
+	VALUES ("872b9e42-7e5c-45f2-9be9-5c47ce6645aa",
+	"28a81d79-71e9-442e-8e26-368b340c0016");
 INSERT INTO O_ATTR
-	VALUES ("344d461a-6ca4-4d3c-aa23-2aa5af47d7db",
-	"d66aab0c-9600-4d6e-b946-0cca3bde9389",
+	VALUES ("872b9e42-7e5c-45f2-9be9-5c47ce6645aa",
+	"28a81d79-71e9-442e-8e26-368b340c0016",
 	"00000000-0000-0000-0000-000000000000",
-	'num',
+	'Fee',
 	'',
 	'',
-	'num',
+	'Fee',
 	0,
 	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
 INSERT INTO O_ID
 	VALUES (0,
-	"d66aab0c-9600-4d6e-b946-0cca3bde9389");
-INSERT INTO O_OIDA
-	VALUES ("344d461a-6ca4-4d3c-aa23-2aa5af47d7db",
-	"d66aab0c-9600-4d6e-b946-0cca3bde9389",
-	0,
-	'num');
+	"28a81d79-71e9-442e-8e26-368b340c0016");
 INSERT INTO O_ID
 	VALUES (1,
-	"d66aab0c-9600-4d6e-b946-0cca3bde9389");
+	"28a81d79-71e9-442e-8e26-368b340c0016");
 INSERT INTO O_ID
 	VALUES (2,
-	"d66aab0c-9600-4d6e-b946-0cca3bde9389");
+	"28a81d79-71e9-442e-8e26-368b340c0016");
 INSERT INTO PE_PE
-	VALUES ("d66aab0c-9600-4d6e-b946-0cca3bde9389",
+	VALUES ("28a81d79-71e9-442e-8e26-368b340c0016",
 	1,
 	"7036918d-228f-40f1-b925-22f845d3b660",
 	"00000000-0000-0000-0000-000000000000",

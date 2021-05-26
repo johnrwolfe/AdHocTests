@@ -1,0 +1,70 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("517af27c-2f8c-4627-a5aa-8000e6c8aba9",
+	'Aircraft',
+	20,
+	'Aircraft',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("41cce528-07cb-4181-9cc7-8f0c5e9e30b1",
+	"517af27c-2f8c-4627-a5aa-8000e6c8aba9",
+	'Report',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'LOG::LogInfo( message:"Aircraft are: " );                                       
+select many planes from instances of Aircraft;
+for each plane in planes
+  LOG::LogInfo( message:"Aircraft :" + plane.number );
+  select one jet related by plane->Jet[R12];
+  if ( not empty jet )
+  	LOG::LogInfo( message:"Make: " + jet.make );
+  end if;
+end for;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	0);
+INSERT INTO O_NBATTR
+	VALUES ("f07ad107-af63-401a-b0d3-d0168f1f1cb1",
+	"517af27c-2f8c-4627-a5aa-8000e6c8aba9");
+INSERT INTO O_BATTR
+	VALUES ("f07ad107-af63-401a-b0d3-d0168f1f1cb1",
+	"517af27c-2f8c-4627-a5aa-8000e6c8aba9");
+INSERT INTO O_ATTR
+	VALUES ("f07ad107-af63-401a-b0d3-d0168f1f1cb1",
+	"517af27c-2f8c-4627-a5aa-8000e6c8aba9",
+	"00000000-0000-0000-0000-000000000000",
+	'number',
+	'',
+	'',
+	'number',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"517af27c-2f8c-4627-a5aa-8000e6c8aba9");
+INSERT INTO O_ID
+	VALUES (1,
+	"517af27c-2f8c-4627-a5aa-8000e6c8aba9");
+INSERT INTO O_ID
+	VALUES (2,
+	"517af27c-2f8c-4627-a5aa-8000e6c8aba9");
+INSERT INTO PE_PE
+	VALUES ("517af27c-2f8c-4627-a5aa-8000e6c8aba9",
+	1,
+	"7036918d-228f-40f1-b925-22f845d3b660",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("7036918d-228f-40f1-b925-22f845d3b660",
+	"00000000-0000-0000-0000-000000000000",
+	"846e9e70-104d-4678-8694-b2e3922e335a",
+	'TestEntities',
+	'',
+	0,
+	'../TestEntities.xtuml');

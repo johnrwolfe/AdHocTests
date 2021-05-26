@@ -25,6 +25,24 @@ INSERT INTO O_ATTR
 	"ba5eda7a-def5-0000-0000-000000000004",
 	'',
 	'');
+INSERT INTO O_NBATTR
+	VALUES ("8bcf5bec-3fa5-439a-8013-cba99e01c3ff",
+	"053d6ebb-b08b-427d-96e8-230debbc21e2");
+INSERT INTO O_BATTR
+	VALUES ("8bcf5bec-3fa5-439a-8013-cba99e01c3ff",
+	"053d6ebb-b08b-427d-96e8-230debbc21e2");
+INSERT INTO O_ATTR
+	VALUES ("8bcf5bec-3fa5-439a-8013-cba99e01c3ff",
+	"053d6ebb-b08b-427d-96e8-230debbc21e2",
+	"71899dbd-0000-4e89-a8f9-7525dffb1938",
+	'role',
+	'',
+	'',
+	'role',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
 INSERT INTO O_ID
 	VALUES (0,
 	"053d6ebb-b08b-427d-96e8-230debbc21e2");

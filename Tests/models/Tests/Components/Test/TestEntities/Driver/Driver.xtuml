@@ -7,57 +7,23 @@ INSERT INTO O_OBJ
 	'Driver',
 	'',
 	"00000000-0000-0000-0000-000000000000");
-INSERT INTO O_REF
-	VALUES ("6de0e1d1-70e6-4654-b1bd-b042cdd3f6e1",
-	"9065e81b-c5ab-4ac1-b5f6-4180a9015185",
-	0,
-	"945233ca-81f8-4453-9037-7fc1b91f41d8",
-	"fc687870-c533-4418-8317-529a9cdc22dd",
-	"6f56d77e-db2b-459b-b83f-2e39c179b7c5",
-	"3b30f288-556d-4ec7-9674-04a7051dd3d3",
-	"3d8b7283-e0aa-4adb-9748-ae2a738974e6",
-	"e7ab6d4b-ab38-4789-b0b2-5157c7b5e0a0",
-	"00000000-0000-0000-0000-000000000000",
-	0,
-	'',
-	'Car',
-	'VIN',
-	'R6.''owns''');
-INSERT INTO R_RGO_PROXY
-	VALUES ("6de0e1d1-70e6-4654-b1bd-b042cdd3f6e1",
-	"fc687870-c533-4418-8317-529a9cdc22dd",
-	"6f56d77e-db2b-459b-b83f-2e39c179b7c5",
-	'../TestEntities.xtuml');
-INSERT INTO O_RTIDA_PROXY
-	VALUES ("945233ca-81f8-4453-9037-7fc1b91f41d8",
-	"9065e81b-c5ab-4ac1-b5f6-4180a9015185",
-	0,
-	"fc687870-c533-4418-8317-529a9cdc22dd",
-	"3b30f288-556d-4ec7-9674-04a7051dd3d3",
-	'../TestEntities.xtuml');
-INSERT INTO O_RATTR
-	VALUES ("3d8b7283-e0aa-4adb-9748-ae2a738974e6",
+INSERT INTO O_TFR
+	VALUES ("b155be90-a7b9-4788-9d93-6cd5c5692a4b",
 	"6de0e1d1-70e6-4654-b1bd-b042cdd3f6e1",
-	"945233ca-81f8-4453-9037-7fc1b91f41d8",
-	"9065e81b-c5ab-4ac1-b5f6-4180a9015185",
+	'Report',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'LOG::LogInfo( message:"Driver associations: registration fee, license expiration:" );
+select any driver from instances of Driver;
+select one reg related by driver->Registration[R6];
+select one exp related by driver->expiration[R7];
+LOG::LogInteger( message:reg.Fee );
+LOG::LogInteger( message:exp.endDate );',
 	1,
-	'VIN');
-INSERT INTO O_BATTR_PROXY
-	VALUES ("945233ca-81f8-4453-9037-7fc1b91f41d8",
-	"9065e81b-c5ab-4ac1-b5f6-4180a9015185",
-	'../Car/Car.xtuml');
-INSERT INTO O_ATTR
-	VALUES ("3d8b7283-e0aa-4adb-9748-ae2a738974e6",
-	"6de0e1d1-70e6-4654-b1bd-b042cdd3f6e1",
+	'',
 	"00000000-0000-0000-0000-000000000000",
-	'VIN',
-	'',
-	'',
-	'VIN',
-	0,
-	"ba5eda7a-def5-0000-0000-000000000007",
-	'',
-	'');
+	0);
 INSERT INTO O_ID
 	VALUES (0,
 	"6de0e1d1-70e6-4654-b1bd-b042cdd3f6e1");

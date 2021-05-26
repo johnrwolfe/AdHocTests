@@ -24,7 +24,7 @@ INSERT INTO GD_MD
 	0,
 	0,
 	0,
-	'',
+	'4.1.17',
 	'Tests::Components::Test::TestFunctions');
 INSERT INTO DIM_DIA
 	VALUES ("c5df5776-d86a-449a-b794-4d7eb5cea450",
@@ -74,8 +74,6 @@ select many segments related by pipe1->pipe[R2.''attaches to'']
 for each segment in segments
 	LOG::LogSuccess( message:"found one" );
 end for;
- 
-
 ',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
@@ -92,22 +90,23 @@ INSERT INTO S_SYNC
 	"00000000-0000-0000-0000-000000000000",
 	'SetAddition',
 	'',
-	'create object instance t1 of thing;
+	'create object instance t1 of thingmajig;
 t1.sequenceNumber = 1;
-create object instance t2 of thing;
+create object instance t2 of thingmajig;
 t2.sequenceNumber = 2;
-create object instance t3 of thing;
+create object instance t3 of thingmajig;
 t3.sequenceNumber = 3;
-create object instance t4 of thing;
+create object instance t4 of thingmajig;
 t4.sequenceNumber = 4;
-create object instance t5 of thing;
+create object instance t5 of thingmajig;
 t5.sequenceNumber = 5;
 
-select many items from instances of thing;
-select many entities from instances of thing;
+select many items from instances of thingmajig;
+select many entities from instances of thingmajig;
 
 all = items + entities;
 for each t in all
+  LOG::LogInfo( message:"SetAddition - expect 5 entities" );
   LOG::LogInteger( message:t.sequenceNumber );
 end for;',
 	"ba5eda7a-def5-0000-0000-000000000000",
@@ -127,8 +126,10 @@ INSERT INTO S_SYNC
 	'',
 	'create object instance e1 of employee;
 e1.name = "Jack";
+e1.role = "technician";
 create object instance e2 of employee;
 e2.name = "Jill";
+e2.role = "supervisor";
 
 create object instance p1 of payment;
 relate p1 to e1 across R3.''is for'';
@@ -137,10 +138,15 @@ relate p2 to e2 across R3.''is for'';
 
 // Jack''s pay
 create object instance element1 of payElement;
+element1.amount = 400;
+element1.name = "salary";
+element1.withholding = 90;
 relate element1 to p1 across R4.''contributes to'';
 create object instance element2 of payElement;
 relate element2 to p1 across R4.''contributes to'';
 create object instance element3 of payElement;
+element3.amount = 50;
+element3.name = "bonus";
 relate element3 to p1 across R4.''contributes to'';
 
 // Jill''s pay
@@ -149,23 +155,12 @@ relate element4 to p2 across R4.''contributes to'';
 create object instance element5 of payElement;
 relate element5 to p2 across R4.''contributes to'';
 
-create object instance payroll of payroll;
+create object instance payroll of Payroll;
+payroll.month = "June";
 select many elements from instances of payElement;
 for each element in elements
   relate element to payroll across R5.''is part of'';
 end for;
-
-select many employees related by payroll->payElement[R5.''computes'']
-                                        ->payment[R4.''contributes to'']
-                                        ->employee[R3.''is for''];
-                                        
-for each employee in employees
-  LOG::LogInfo( message:"name is " + employee.name );
-end for;                                        
-
-create object instance t of thing;;
-create object instance c of coOwner;
-relate t to c across R8.''are shared by'';
 ',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
@@ -184,9 +179,9 @@ INSERT INTO S_SYNC
 	'',
 	'create object instance obs1 of observation;
 create object instance trigger1 of trigger;
-relate obs1 to  trigger1 across R1.''waits for '';
-unrelate obs1 from trigger1 across R1.''waits for '';
-select any obs1 related by trigger1->observation[R1.''initiates''];
+relate obs1 to  trigger1 across R10.''waits for'';
+unrelate obs1 from trigger1 across R10.''waits for'';
+select any obs1 related by trigger1->observation[R10.''initiates''];
 if ( empty obs1 )
   delete object instance trigger1;
 end if;',
@@ -211,19 +206,163 @@ SQL::load();
 select any employee from instances of employee;
 if ( empty employee )
   LOG::LogInfo( message:"creating instances programatically" );
-  ::Selections();
+    ::Selections();
+    ::AssocTest();
+    ::RouteTest();
+    ::SuperTest();
+    ::OwnerTest();
   LOG::LogInfo( message:"created..." );
+  Route::Report();
+  Payroll::Report();
+  Aircraft::Report();
+  coOwner::Report();
+  Driver::Report();
+  TheParent::Report();
+else
+  LOG::LogInfo( message:"Sucessfully loaded persisted data - exploring what we got:" );
+  Route::Report();
+  Payroll::Report();
+  Aircraft::Report();
+  coOwner::Report();
+  Driver::Report();
+  TheParent::Report();
 end if;
 
 LOG::LogInfo( message:"persisting..." );
 SQL::serialize_file( file:"persisted.sql" );
-',
+
+LOG::LogInfo( message:"done" );
+
+control stop;',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'',
 	0);
 INSERT INTO PE_PE
 	VALUES ("1f8e0ab5-2dd3-4153-bd5e-4145b872766e",
+	1,
+	"6a4a82e9-5119-463b-b210-5e00c3ece052",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("dbaf23b3-8cc2-433f-a98f-9c2865c0d5cd",
+	"00000000-0000-0000-0000-000000000000",
+	'AssocTest',
+	'',
+	'create object instance suv of Car;
+create object instance man of Driver;
+create object instance reg of Registration;
+reg.Fee = 50;
+relate man to suv across R6.''owns'' using reg;
+create object instance cdl of License;
+create object instance exp of expiration;
+exp.endDate = 2023;
+relate cdl to man across R7.''licenses'' using exp;',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("dbaf23b3-8cc2-433f-a98f-9c2865c0d5cd",
+	1,
+	"6a4a82e9-5119-463b-b210-5e00c3ece052",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("d23830cd-b660-4ef5-931c-7e727fd1af9f",
+	"00000000-0000-0000-0000-000000000000",
+	'RouteTest',
+	'',
+	'create object instance Dublin of City;
+Dublin.name = "dublin";
+create object instance Limerick of City;
+Limerick.name = "limerick";
+create object instance Belfast of City;
+Belfast.name = "belfast";
+create object instance Wicklow of City;
+Wicklow.name = "wicklow";
+create object instance M1 of Route;
+M1.distance = 90;
+relate Belfast to Dublin across R11.''has routes to'' using M1;
+create object instance M7 of Route;
+M7.distance = 110;
+relate Limerick to Dublin across R11.''has routes to'' using M7;
+create object instance M2 of Route;
+M2.distance = 30;
+relate Wicklow to Dublin across R11.''has routes from'' using M2;
+create object instance Byway of Route;
+relate Belfast to Limerick across R11.''has routes from'' using Byway;',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("d23830cd-b660-4ef5-931c-7e727fd1af9f",
+	1,
+	"6a4a82e9-5119-463b-b210-5e00c3ece052",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("9412d2d4-9488-4981-b09d-3e3e4e39b42c",
+	"00000000-0000-0000-0000-000000000000",
+	'SuperTest',
+	'',
+	'create object instance ac of Aircraft;
+ac.number = "EI-123";
+create object instance jet of Jet;
+jet.make = "Airbus";
+jet.wingspan = 120;
+relate jet to ac across R12;
+
+create object instance ac of Aircraft;
+ac.number = "1055W";
+create object instance glider of Glider;
+glider.wingspan = 15;
+relate glider to ac across R12;
+
+create object instance parent of TheParent;
+parent.Name = "LivingCreature";
+create object instance child of TheChild;
+child.Name = "Animal";
+relate child to parent across R13;
+
+create object instance parent of TheParent;
+parent.Name = "LivingCreature";
+create object instance child of TheChild;
+child.Name = "Man";
+relate child to parent across R13;
+
+create object instance isaA of classA;
+create object instance isaB of classB;
+relate isaB to isaA across R14.''is a'';',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("9412d2d4-9488-4981-b09d-3e3e4e39b42c",
+	1,
+	"6a4a82e9-5119-463b-b210-5e00c3ece052",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("ef378a65-6197-4acb-844a-29cd3fe66a53",
+	"00000000-0000-0000-0000-000000000000",
+	'OwnerTest',
+	'',
+	'create object instance c of coOwner;
+create object instance t of thingmajig;
+t.sequenceNumber = 1001;
+relate t to c across R8.''are shared by'';
+create object instance t of thingmajig;
+t.sequenceNumber = 1002;
+relate t to c across R8.''are shared by'';',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("ef378a65-6197-4acb-844a-29cd3fe66a53",
 	1,
 	"6a4a82e9-5119-463b-b210-5e00c3ece052",
 	"00000000-0000-0000-0000-000000000000",
