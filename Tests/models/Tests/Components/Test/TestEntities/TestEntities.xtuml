@@ -673,7 +673,7 @@ INSERT INTO GD_GE
 	"275a50a3-0217-4d9f-aa65-4f65a82c0948",
 	21,
 	0,
-	'Tests::Components::Test::TestEntities::payroll');
+	'Tests::Components::Test::TestEntities::Payroll');
 INSERT INTO GD_SHP
 	VALUES ("6456a8ce-75c3-4faf-8d78-e7e584757ab1");
 INSERT INTO GD_NCS
@@ -3308,12 +3308,12 @@ INSERT INTO R_OIR
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_OBJ_PROXY
 	VALUES ("275a50a3-0217-4d9f-aa65-4f65a82c0948",
-	'payroll',
+	'Payroll',
 	9,
-	'payroll',
+	'Payroll',
 	'',
 	"00000000-0000-0000-0000-000000000000",
-	'./payroll/payroll.xtuml');
+	'./Payroll/Payroll.xtuml');
 INSERT INTO PE_PE
 	VALUES ("09ed3693-dd68-424d-90fd-6eba1c8854a5",
 	1,
@@ -3902,6 +3902,7 @@ When simulated time is unchecked( and deterministically unchecked ) log messages
 	0,
 	"00000000-0000-0000-0000-000000000000",
 	0,
+	'',
 	'',
 	'../Test.xtuml');
 INSERT INTO S_SYS_PROXY
