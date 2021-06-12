@@ -1,3 +1,1 @@
 *,RootPackage,*,Tests::Components
-Components::Test,InitFunction,Component,PersistTest
-Components::Test,InstanceLoading,Component,Sql

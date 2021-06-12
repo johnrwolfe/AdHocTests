@@ -1,32 +1,32 @@
 -- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
 
 INSERT INTO O_OBJ
-	VALUES ("8c94fc7b-02ee-4d61-be66-231efcd5b86a",
-	'License',
-	13,
-	'License',
+	VALUES ("e687de91-62ed-4bb3-8762-881f68149989",
+	'ClassB',
+	2,
+	'ClassB',
 	'',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_ID
 	VALUES (0,
-	"8c94fc7b-02ee-4d61-be66-231efcd5b86a");
+	"e687de91-62ed-4bb3-8762-881f68149989");
 INSERT INTO O_ID
 	VALUES (1,
-	"8c94fc7b-02ee-4d61-be66-231efcd5b86a");
+	"e687de91-62ed-4bb3-8762-881f68149989");
 INSERT INTO O_ID
 	VALUES (2,
-	"8c94fc7b-02ee-4d61-be66-231efcd5b86a");
+	"e687de91-62ed-4bb3-8762-881f68149989");
 INSERT INTO PE_PE
-	VALUES ("8c94fc7b-02ee-4d61-be66-231efcd5b86a",
+	VALUES ("e687de91-62ed-4bb3-8762-881f68149989",
 	1,
-	"7036918d-228f-40f1-b925-22f845d3b660",
+	"0c366793-4256-4a45-8d33-0098a287cac7",
 	"00000000-0000-0000-0000-000000000000",
 	4);
 INSERT INTO EP_PKG_PROXY
-	VALUES ("7036918d-228f-40f1-b925-22f845d3b660",
+	VALUES ("0c366793-4256-4a45-8d33-0098a287cac7",
 	"00000000-0000-0000-0000-000000000000",
 	"846e9e70-104d-4678-8694-b2e3922e335a",
-	'TestEntities',
+	'Things',
 	'',
 	0,
-	'../TestEntities.xtuml');
+	'../Things.xtuml');
