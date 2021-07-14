@@ -1,0 +1,61 @@
+-- BP 7.1.6 content: Interface syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO C_I
+	VALUES ("addf52b2-e22e-4a25-a65e-0f4bcc0b4778",
+	"00000000-0000-0000-0000-000000000000",
+	'Reporting',
+	'');
+INSERT INTO C_EP
+	VALUES ("0d478752-4738-4522-afbf-80841de39f41",
+	"addf52b2-e22e-4a25-a65e-0f4bcc0b4778",
+	-1,
+	'ProjectUpdate',
+	'',
+	1);
+INSERT INTO C_AS
+	VALUES ("0d478752-4738-4522-afbf-80841de39f41",
+	'ProjectUpdate',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("925a8cde-b10e-4cf0-902e-8deafdcdd23f",
+	"0d478752-4738-4522-afbf-80841de39f41",
+	"ba5eda7a-def5-0000-0000-00000000000e",
+	'ReportDate',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("2143236f-d6e0-4085-9e95-175ccb02abe9",
+	"0d478752-4738-4522-afbf-80841de39f41",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'Name',
+	'',
+	0,
+	'',
+	"925a8cde-b10e-4cf0-902e-8deafdcdd23f");
+INSERT INTO C_PP
+	VALUES ("80076644-ed6b-46d6-b63f-298659838842",
+	"0d478752-4738-4522-afbf-80841de39f41",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'Value',
+	'',
+	0,
+	'',
+	"2143236f-d6e0-4085-9e95-175ccb02abe9");
+INSERT INTO PE_PE
+	VALUES ("addf52b2-e22e-4a25-a65e-0f4bcc0b4778",
+	1,
+	"8fcb41d1-8b39-4050-bad8-de1d28bee778",
+	"00000000-0000-0000-0000-000000000000",
+	6);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("8fcb41d1-8b39-4050-bad8-de1d28bee778",
+	"846e9e70-104d-4678-8694-b2e3922e335a",
+	"846e9e70-104d-4678-8694-b2e3922e335a",
+	'Interfaces',
+	'',
+	0,
+	'../Interfaces.xtuml');

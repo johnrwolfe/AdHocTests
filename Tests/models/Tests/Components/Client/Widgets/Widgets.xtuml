@@ -278,6 +278,28 @@ INSERT INTO PE_PE
 	"701acde9-fe0b-4d27-a292-12538c6f6eb7",
 	"00000000-0000-0000-0000-000000000000",
 	1);
+INSERT INTO S_SYNC
+	VALUES ("066a1fc7-d293-49af-ab74-a3f83413c2fe",
+	"00000000-0000-0000-0000-000000000000",
+	'Report',
+	'',
+	'thedate = TIM::current_date(); 
+today = TIM::get_day( date:thedate );
+LOG::LogInfo( message: "Reporting date - today" );
+LOG::LogInteger( message:today );
+send Port1::ProjectUpdate( ReportDate: thedate, Name:"Me", Value:1000 );
+LOG::LogInfo( message: "sent.." );',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0,
+	2);
+INSERT INTO PE_PE
+	VALUES ("066a1fc7-d293-49af-ab74-a3f83413c2fe",
+	1,
+	"701acde9-fe0b-4d27-a292-12538c6f6eb7",
+	"00000000-0000-0000-0000-000000000000",
+	1);
 INSERT INTO PE_PE
 	VALUES ("701acde9-fe0b-4d27-a292-12538c6f6eb7",
 	1,
