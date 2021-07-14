@@ -38,11 +38,15 @@ INSERT INTO S_SYNC
 	"00000000-0000-0000-0000-000000000000",
 	'T2',
 	'',
-	'create object instance e of Employee;
+	'// create object instance e of Employee;
+select any e from instances of Employee;
+
+/*
 e.Birthdate = "07-Jan-1961";
 e.Name = "Jana Burke";
 e.Number = 123456;
-send Srv::c( emp:e );',
+send Srv::c( emp:e );
+*/',
 	"ba5eda7a-def5-0000-0000-000000000000",
 	1,
 	'',
