@@ -1,2 +1,2 @@
 *,RootPackage,*,Tests::Deployment
-A,InitFunction,Component,T1
+Components::A,InitFunction,Component,T1

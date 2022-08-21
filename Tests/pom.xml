@@ -55,12 +55,6 @@
               <goal>core</goal>
             </goals>
           </execution>
-          <execution>
-            <id>ciera-sql</id>
-            <goals>
-              <goal>sql</goal>
-            </goals>
-          </execution>
         </executions>
       </plugin>
     </plugins>
