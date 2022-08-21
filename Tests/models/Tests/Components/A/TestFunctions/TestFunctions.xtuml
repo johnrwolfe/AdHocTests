@@ -1,0 +1,78 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("6abfc013-7d11-49ee-b5c6-e90538623aa8",
+	"00000000-0000-0000-0000-000000000000",
+	"846e9e70-104d-4678-8694-b2e3922e335a",
+	'TestFunctions',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("c3e7901c-b013-436a-b4fb-02b1fdbc24a5",
+	112,
+	"6abfc013-7d11-49ee-b5c6-e90538623aa8",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'Tests::Components::A::TestFunctions');
+INSERT INTO DIM_DIA
+	VALUES ("c3e7901c-b013-436a-b4fb-02b1fdbc24a5",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("40c75198-9452-43bb-9393-ee36dae709da",
+	"00000000-0000-0000-0000-000000000000",
+	'T1',
+	'',
+	'id = "1234-5678-9012-3456";
+id_us = STRING::replaceall( s:id, pattern:"-", replacement:"_" );
+LOG::LogInfo( message:"id: " + id );
+LOG::LogInfo( message:"id_us: " + id_us );',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	0,
+	1);
+INSERT INTO PE_PE
+	VALUES ("40c75198-9452-43bb-9393-ee36dae709da",
+	1,
+	"6abfc013-7d11-49ee-b5c6-e90538623aa8",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("6abfc013-7d11-49ee-b5c6-e90538623aa8",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"a1d375fc-25ea-4afd-8a52-18180dba3dea",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("a1d375fc-25ea-4afd-8a52-18180dba3dea",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'A',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'',
+	'../A.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("846e9e70-104d-4678-8694-b2e3922e335a",
+	'Tests',
+	1,
+	'../../../Tests.xtuml');
